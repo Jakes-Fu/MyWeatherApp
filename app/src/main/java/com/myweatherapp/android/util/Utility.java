@@ -2,9 +2,15 @@ package com.myweatherapp.android.util;
 
 import android.text.TextUtils;
 
+import androidx.annotation.Nullable;
+
+import com.google.gson.Gson;
+import com.myweatherapp.android.WeatherActivity;
 import com.myweatherapp.android.db.City;
 import com.myweatherapp.android.db.County;
 import com.myweatherapp.android.db.Province;
+import com.myweatherapp.android.gson.AQI;
+import com.myweatherapp.android.gson.Weather;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -80,4 +86,44 @@ public class Utility {
         return false;
     }
 
+    /**
+     * 将返回的JSON数据解析成Weather实体类*/
+    @Nullable
+    public static Weather handleWeatherResponse(String response){
+        try{
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather6");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+
+            Gson gson = new Gson();
+            Weather weather = gson.fromJson(jsonObject.toString(), Weather.class);
+            return weather;
+
+//            return new Gson().fromJson(weatherContent,Weather.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static AQI handleAQIResponse(String response) {
+
+        try {
+            // 将整个json实例化保存在jsonObject中
+            JSONObject jsonObject = new JSONObject(response);
+           // 从jsonObject中取出键为"HeWeather6"的数据,并保存在数组中
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather6");
+            // 取出数组中的第一项,并以字符串形式保存
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            // 返回通过Gson解析后的Weather对象
+            Gson gson = new Gson();
+            AQI aqi =  gson.fromJson(jsonObject.toString(), AQI.class);
+            return aqi;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
 }
