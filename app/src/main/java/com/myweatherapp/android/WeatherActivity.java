@@ -5,6 +5,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.myweatherapp.android.gson.AQI;
 import com.myweatherapp.android.gson.Weather;
+import com.myweatherapp.android.service.AutoUpdateService;
 import com.myweatherapp.android.util.HttpUtil;
 
 import java.io.IOException;
@@ -293,8 +295,10 @@ public class WeatherActivity extends AppCompatActivity {
         sportText.setText("运动指数："+weather.getHeWeather6().get(0).getLifestyle().get(3).getTxt());
 
         weatherLayout.setVisibility(View.VISIBLE);
-//        Intent intent=new Intent(this, AutoUpdateService.class);
-//        startService(intent);
+
+        //激活自动更新天气信息服务
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
 
 
 
