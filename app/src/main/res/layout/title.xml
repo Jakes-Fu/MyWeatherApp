@@ -5,6 +5,16 @@
     android:layout_height="?attr/actionBarSize">
 
     <TextView
+        android:id="@+id/nav_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="⇆切换城市"
+        android:textColor="#fff"
+        android:textSize="18sp"/>
+    <TextView
         android:id="@+id/title_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
