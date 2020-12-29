@@ -4,14 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize">
 
+    <ImageView
+        android:id="@+id/nav_image_view"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/transform1"/>
     <TextView
         android:id="@+id/nav_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="35dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:text="⇆切换城市"
+        android:text="切换城市"
         android:textColor="#fff"
         android:textSize="18sp"/>
     <TextView
@@ -21,14 +29,22 @@
         android:layout_centerInParent="true"
         android:textColor="#fff"
         android:textSize="25sp"/>
-    <TextView
-        android:id="@+id/title_update_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
+<!--    <TextView-->
+<!--        android:id="@+id/title_update_time"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:textColor="#fff"-->
+<!--        android:textSize="16sp"/>-->
+    <ImageButton
+        android:id="@+id/title_refresh"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="20dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:textColor="#fff"
-        android:textSize="16sp"/>
+        android:background="@drawable/refresh1"/>
 
 </RelativeLayout>
