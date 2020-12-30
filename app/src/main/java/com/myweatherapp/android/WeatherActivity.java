@@ -44,7 +44,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     private ScrollView weatherLayout;
     private TextView titleCity;
-//    private TextView titleUpdateTime;
+    private TextView titleUpdateTime;
     private TextView degreeText;
     private TextView weatherInfoText;
     private LinearLayout forecastLayout;
@@ -82,7 +82,7 @@ public class WeatherActivity extends AppCompatActivity {
         * 初始化各个控件*/
         weatherLayout = (ScrollView) findViewById(R.id.weather_layout);
         titleCity = (TextView) findViewById(R.id.title_city);
-//        titleUpdateTime = (TextView) findViewById(R.id.title_update_time);
+        titleUpdateTime = (TextView) findViewById(R.id.title_update_time);
         degreeText = (TextView) findViewById(R.id.degree_text);
         weatherInfoText = (TextView) findViewById(R.id.weather_info_text);
         forecastLayout = (LinearLayout) findViewById(R.id.forecast_layout);
@@ -173,7 +173,7 @@ public class WeatherActivity extends AppCompatActivity {
         new Thread(){
             public void run(){
                 try {
-                    sleep(800);
+                    sleep(500);
                     progressDialog.dismiss();
                 }catch (InterruptedException e){
                     e.printStackTrace();
@@ -311,11 +311,11 @@ public class WeatherActivity extends AppCompatActivity {
 
 
         String cityName = weather.getHeWeather6().get(0).getBasicX().getLocation();
-//        String updateTime = weather.getHeWeather6().get(0).getUpdate().getLoc();
+        String updateTime = weather.getHeWeather6().get(0).getUpdate().getLoc();
         String degree = weather.getHeWeather6().get(0).getNowX().getTmp()+"℃";
         String weatherInfo = weather.getHeWeather6().get(0).getNowX().getCond_txt();
         titleCity.setText(cityName);
-//        titleUpdateTime.setText(updateTime);
+        titleUpdateTime.setText(updateTime);
         degreeText.setText(degree);
         weatherInfoText.setText(weatherInfo);
         forecastLayout.removeAllViews();

@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">MyWeatherApp</string>
+    <string name="app_name">浮尘天气</string>
     <string name="todo">TODO</string>
+    <string name="refresh">\u21BA</string>
 </resources>

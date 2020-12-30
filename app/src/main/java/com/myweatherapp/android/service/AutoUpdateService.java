@@ -45,7 +45,7 @@ public class AutoUpdateService extends Service {
         updateWeather();
         updateBingPic();
         AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        int anHour = 8 * 60 * 60 * 1000;
+        int anHour = 1 * 60 * 60 * 1000;
 //        int anHour = 1000;
         long triggerAtTime = SystemClock.elapsedRealtime() + anHour;
         Intent i = new Intent(this,AutoUpdateService.class);
@@ -93,24 +93,24 @@ public class AutoUpdateService extends Service {
         /**
         * 请求OKHttp更新AQI信息(启用请求更新AQI，app会报空指针错误)
         * */
-//            HttpUtil.sendOkHttpRequest(aqiUrl, new Callback() {
-//                @Override
-//                public void onFailure(Call call, IOException e) {
-//                    e.printStackTrace();
-//                }
-//                @Override
-//                public void onResponse(Call call, Response response) throws IOException {
-//                    String responseText = response.body().string();
-//                    AQI aqi = handleAQIResponse(responseText);
-//                    if((aqi != null) && "ok".equals(aqi.getHeWeather6().get(0).getStatus())) {
-//                        SharedPreferences.Editor editor =
-//                                PreferenceManager.getDefaultSharedPreferences(AutoUpdateService.this).edit();
-//                        editor.putString("weather",responseText);
-//                        editor.apply();
-//                    }
-////                    Log.d("AutoUpdateService","UpdateAQI");
-//                }
-//            });
+            HttpUtil.sendOkHttpRequest(aqiUrl, new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    e.printStackTrace();
+                }
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String responseText = response.body().string();
+                    AQI aqi = handleAQIResponse(responseText);
+                    if((aqi != null) && "ok".equals(aqi.getHeWeather6().get(0).getStatus())) {
+                        SharedPreferences.Editor editor =
+                                PreferenceManager.getDefaultSharedPreferences(AutoUpdateService.this).edit();
+                        editor.putString("weather",responseText);
+                        editor.apply();
+                    }
+//                    Log.d("AutoUpdateService","UpdateAQI");
+                }
+            });
         }
 //        Log.d("AutoUpdateService","UpdateWeather" );
 //        Log.d("AutoUpdateService","UpdateAQI");
